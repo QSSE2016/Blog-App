@@ -1,4 +1,5 @@
 using BlogAppAPI.Data;
+using BlogAppAPI.Security;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
