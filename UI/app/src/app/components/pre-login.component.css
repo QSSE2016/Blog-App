@@ -1,0 +1,67 @@
+:host {
+    --bg-color: 30,30,30
+}
+
+form {
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(var(--bg-color),.5);
+    border-radius: .3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 0 5px 0 black;
+}
+
+h1 {
+    color: white;
+}
+
+form > input {
+    padding: 1em;
+    border: none;
+    width: 50%;
+    border-radius: .3em;
+    color: white;
+    background-color: rgba(var(--bg-color),.7);
+}
+
+form > input:focus {
+    outline: none;
+}
+
+form > button {
+    padding: 1em;
+    width: 80%;
+    border: none;
+    border-radius: .3em;
+    color: white;
+    background-color: rgba(var(--bg-color),.7);
+}
+
+form > button:hover {
+    background-color: rgba(var(--bg-color),.85);
+    cursor: pointer;
+}
+
+span {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%,-50%);
+    font-size: 1.3rem;
+    padding: .5em;
+    transition: background-color 100ms ease-in-out,color 100ms ease-in-out;
+    border-radius: .2em;
+}
+
+span:hover {
+    background-color: rgba(var(--bg-color),.5);
+    cursor: pointer;
+    color: white;
+}

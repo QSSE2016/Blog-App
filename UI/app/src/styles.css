@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+*,*::before,*::after {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    width: 100dvh;
+    width: 100vh;
+    height: 100dvh;
+    height: 100vh;
+    background: #B2FEFA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(#0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(#0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+}

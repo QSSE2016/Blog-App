@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" *ngIf="wantsToLogin" (ngSubmit)="loginSubmit()">
+    <h1> Log In </h1>
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="password" placeholder="Password" formControlName="password">
+    <button type="submit"> Log In </button>
+</form>
+
+<span (click)="changeForm()"> {{changeText}} </span>
+
+<form [formGroup]="signUpForm" *ngIf="!wantsToLogin" (ngSubmit)="signUpSubmit()">
+    <h1> Sign Up </h1>
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="email" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Password" formControlName="password">
+    <button type="submit"> Log In </button>
+</form>
