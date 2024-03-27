@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./pre-login.component.css']
 })
 export class PreLoginComponent {
+  @Output() exitLoginPageEvent: EventEmitter<void> = new EventEmitter<void>(); // will probably change void to something else later.
+
   wantsToLogin: boolean = true
   loginForm: FormGroup
   signUpForm: FormGroup
@@ -32,6 +34,7 @@ export class PreLoginComponent {
     }
 
     console.log(this.loginForm.controls)
+    this.exitLoginPageEvent.emit();
   }
 
   signUpSubmit() {
@@ -40,7 +43,8 @@ export class PreLoginComponent {
       return;
     }
 
-    console.log(this.signUpForm.controls)
+    alert("User registered!")
+    this.changeForm()
   }
 
 

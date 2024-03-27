@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PreLoginComponent } from './components/pre-login.component';
+import { MainComponent } from './components/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PreLoginComponent
+    PreLoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

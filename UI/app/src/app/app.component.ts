@@ -13,5 +13,11 @@ export enum Page {
 export class AppComponent {
   page: Page = Page.PRE_LOGIN
 
+
+  changeToMain() {
+    this.page = Page.MAIN
+  }
+
   get isInPreLogin() {return this.page == Page.PRE_LOGIN}
+  get isInMain() { return this.page == Page.MAIN}
 }

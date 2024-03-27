@@ -1,1 +1,2 @@
-<app-pre-login *ngIf="isInPreLogin"></app-pre-login>
+<app-pre-login *ngIf="isInPreLogin" (exitLoginPageEvent)="changeToMain()"></app-pre-login>
+<app-main *ngIf="isInMain"></app-main>
