@@ -9,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true); // everything is lower case, just in case some controller uses Capitals for some reason,idk.
 
+
+// Add "global" services.
+builder.Services.AddSingleton<Hasher>();
+builder.Services.AddSingleton<Verifier>();
+
 // Add context
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
