@@ -9,17 +9,24 @@ namespace BlogAppAPI.Controllers
 {
     // Responsible for login and sign up (couldn't find a better name,shut up)
 
+    [Route("api/cred")]
     [ApiController]
-    [Route("api/[controller]")]
     public class CredController : Controller
     {
         private readonly AppDbContext context; // too bored to use repository pattern.
         private readonly Verifier verifier;
         private readonly Hasher hasher;
+
         public CredController(AppDbContext context,Verifier verifier,Hasher hasher) { 
             this.context = context;
             this.verifier = verifier;
             this.hasher = hasher;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok();
         }
 
         [HttpPost]
@@ -29,20 +36,34 @@ namespace BlogAppAPI.Controllers
             // Assume that no duplicate names exist.
             User? user = await context.Users.SingleOrDefaultAsync(user => user.Name == request.Username);
             if(user == null)
-                return NotFound();
+                return NotFound("Invalid credentials. Please try again");
 
             // Logged in!
             if (verifier.VerifyPassword(request.Password, user.HashedPassword, user.Salt))
-                return Ok();
+            {
+                UserDto response = new UserDto()
+                {
+                    Username = user.Name,
+                    Email = user.Email,
+                    Id = user.Id
+                };
+                return Ok(response);
+            }
            
             // Incorrect credentials
-            return Unauthorized();
+            return Unauthorized("Invalid credentials. Please try again");
         }
 
         [HttpPost]
         [Route("sign-up")]
         public async Task<IActionResult> SignUp(SignUpRequestDto request)
         {
+            // email and username are unique to every user
+            User? user = await context.Users.SingleOrDefaultAsync(user => user.Name == request.Username || user.Email == request.Email);
+            if (user != null)
+                return StatusCode(400, "The username or password you entered belong to another account. Please try different credentials");
+
+
             string hashed = hasher.HashPassword(request.Password, out var salt);
 
             User toAdd = new User()
@@ -61,7 +82,7 @@ namespace BlogAppAPI.Controllers
             } catch(Exception ex)
             {
                 // Oops something went wrong
-                return StatusCode(500,ex.Message);
+                return StatusCode(500,"Something went wrong while attempting to sign up. Please try again later.");
             }
 
             return Ok();

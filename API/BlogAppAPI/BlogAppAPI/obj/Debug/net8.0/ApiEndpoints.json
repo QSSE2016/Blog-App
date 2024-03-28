@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "BlogAppAPI.Controllers.CredController",
+    "Method": "Get",
+    "RelativePath": "api/cred",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAppAPI.Controllers.CredController",
+    "Method": "Login",
+    "RelativePath": "api/cred/log-in",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogAppAPI.Models.DTOS.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAppAPI.Controllers.CredController",
+    "Method": "SignUp",
+    "RelativePath": "api/cred/sign-up",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogAppAPI.Models.DTOS.SignUpRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
