@@ -72,7 +72,7 @@ namespace BlogAppAPI.Controllers
                 Email = request.Email,
                 HashedPassword = hashed,
                 Salt = salt,
-                blogIds = []
+                BlogIds = []
             };
 
             try
