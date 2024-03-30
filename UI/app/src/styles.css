@@ -6,12 +6,11 @@
 }
 
 body {
-    width: 100dvh;
-    width: 100vh;
+    width: 100dvw;
+    width: 100vw;
     height: 100dvh;
     height: 100vh;
-    background: #B2FEFA;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(#0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(#0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: hsl(182, 47%, 37%);
     margin: 0;
+    overflow-y: auto;
 }

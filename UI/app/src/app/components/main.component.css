@@ -1,0 +1,135 @@
+:host {
+    --main-border-color: 181,64%,9%;
+    --main-highlight-color: 180,65%,15%;
+}
+
+.top-bar {
+    position: sticky;
+    width:100%;
+    height: max(100px,10%);
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-left-radius: .3em;
+    border-bottom-right-radius: .3em;
+    top: 0;
+    z-index: 2;
+}
+
+.top-bar > button {
+    padding: .6em 1em;
+    border: none;
+    border-radius: .3em;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: black;
+    transition: background-color 100ms ease-in-out,color 100ms ease-in-out;
+}
+
+.top-bar > button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: rgba(30,30,30,.7);
+}
+
+.formulated-message {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: .5em;
+}
+
+.create-blog-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: max(50px,5%);
+    padding: 4.5em 0.5em;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+    border: none;
+    transform: translate(0%,-50%);
+    font-size: 1.1rem;
+    box-shadow: 0 0 5px 0 hsl(var(--main-border-color));
+    transition: background-color 100ms ease-in-out,color 100ms ease-in-out,box-shadow 100ms ease-in-out;
+}
+
+.create-blog-button:hover {
+    background-color: hsl(var(--main-highlight-color));  
+    box-shadow: 0 0 5px 0 white;
+    color: white;  
+    cursor: pointer;
+}
+
+/* Blog stuff */
+.blogs-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 2rem;
+}
+
+.blog {
+    width: max(300px,50%);
+    height: max(220px,30%);
+    background-color: white;
+    box-shadow: 0 0 5px 0 black;
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.top-section {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    font-weight: bold;
+}
+
+.top-section > span {
+    height: 100%;
+    background-color: rgba(30,30,30,.1);
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 .5em;
+}
+  
+.middle-section {
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+}
+  
+.bottom-section {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    padding: 1em;
+}
+  
+.bottom-section > button {
+    padding: 1em;
+    border: none;
+    box-shadow: 0 0 2px 0 black;
+    font-weight: bold;
+    transition: background-color 100ms ease-in-out,color 100ms ease-in-out;
+}
+
+.bottom-section > button:hover {
+    background-color: rgba(30,30,30,.7);
+    color: white;
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@ export enum Page {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  page: Page = Page.PRE_LOGIN
+  page: Page = Page.MAIN
 
 
   changeToMain() {

@@ -1,1 +1,29 @@
-<p>main works!</p>
+<div class="top-bar">
+    <button (click)="updateSubPage(0)"> Explore </button>
+    <button (click)="updateSubPage(1)"> My Blogs </button>
+    <button (click)="updateSubPage(2)"> About </button>
+</div>
+
+<div class="my-blogs" *ngIf="currentSubPage == MY_BLOGS">
+    <div class="formulated-message" *ngIf="blogs.length == 0">
+        <h1> You have no blogs. </h1>
+        <span> You can create blogs by clicking the "Create Blog" button. If you didn't know that already, ask on stack overflow how to drink bleach. </span>
+    </div>
+    <div class="blogs-container">
+        <div class="blog" *ngFor="let blog of blogs"> 
+            <div class="top-section">
+                {{blog.title}}
+                <span>{{blog.authorName}}</span>
+            </div>
+            <div class="middle-section">
+                {{blog.description}}
+            </div>
+            <div class="bottom-section">
+                <button> View Content </button>
+                <button> Edit Blog </button>
+                <button> Delete Blog </button>
+            </div>
+        </div>
+    </div>
+    <button class="create-blog-button">Create Blog</button>
+</div>
