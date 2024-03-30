@@ -11,6 +11,7 @@ export class APITalkerService {
   port = 7136
   url = `https://localhost:${this.port}`
   credRoute = 'api/cred'
+  infoRoute = 'api/info'
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,21 @@ export class APITalkerService {
       password: password
     }
     
+   
     return this.http.post(`${this.url}/${this.credRoute}/sign-up`,payload)
   }
+
+
+  getBlogs() : Observable<object> {
+    // Temporary. Won't actually work for now
+    const payload: SignUpRequest = {
+      username: '',
+      email: '',
+      password: ''
+    }
+    
+   
+    return this.http.post(`${this.url}/${this.infoRoute}/blogs`,payload)
+  }
+
 }

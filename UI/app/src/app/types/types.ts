@@ -10,9 +10,18 @@ export type SignUpRequest = {
     password: string
 }
 
-// The way i represent Users in front-end. (doesnt have salt and password stored cause they are not needed)
+// The way i represent Users in front-end. 
 export type User = {
     username: string,
     email: string,
     id: number
+}
+
+// The way i represent blogs in front-end
+export type Blog = {
+    id: number,
+    authorId: number
+    title: string,
+    description: string,
+    authorName: string,
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { APITalkerService } from '../services/apitalker.service';
 import { Subscription } from 'rxjs';
 import { User } from '../types/types';
+import { ClientInfoService } from '../services/client-info.service';
 
 @Component({
   selector: 'app-pre-login',
@@ -20,7 +21,7 @@ export class PreLoginComponent implements OnDestroy {
   signUpSub?: Subscription
 
 
-  constructor(private talker: APITalkerService) {
+  constructor(private talker: APITalkerService,private userinfo: ClientInfoService) {
     this.loginForm = new FormGroup({
       username: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required)
@@ -49,6 +50,7 @@ export class PreLoginComponent implements OnDestroy {
     this.loginSub = this.talker.attemptLogin(this.loginForm.controls['username'].value,this.loginForm.controls['password'].value).subscribe({
       next: (arg: User) => {
         alert("Signed in succesfully")
+        this.userinfo.setUser(arg)
         this.exitLoginPageEvent.emit()
       },
       error: (arg) => {
