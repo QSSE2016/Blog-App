@@ -10,15 +10,24 @@ import { ClientInfoService } from '../services/client-info.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-   blogs: Array<Blog> = []
-   currentSubPage = 1 // by default we are viewing the client's blogs.
-   blogSelected: Blog = {} as Blog
-
    // I used enums before to track which page is active so now I'll use constants. Perfectly balanced as all things should be.
    readonly EXPLORE = 0
    readonly MY_BLOGS = 1
    readonly ABOUT = 2
-   readonly VIEW_BLOG = 3 // secret page hehe
+
+   // Secret Pages
+   readonly VIEW_BLOG = 3 
+   readonly CREATE_EDIT_BLOG = 4 
+
+   // Edit Mode (Create or Edit). I'm lowkey starting to regret this method but whatever
+   readonly CREATE_MODE = 10
+   readonly EDIT_MODE = 11
+
+   myBlogs: Array<Blog> = []
+   blogs: Array<Blog> = []
+   currentSubPage = 1 // by default we are viewing the client's blogs.
+   currentEditMode = 10
+   selectedBlog: Blog = {} as Blog 
 
    constructor(private talker: APITalkerService,private client: ClientInfoService) {
       let blog1: Blog = {
@@ -45,12 +54,25 @@ export class MainComponent {
         authorName: "You"
       }
 
-      this.blogs.push(blog1)
-      this.blogs.push(blog2)
-      this.blogs.push(blog3)
+      this.myBlogs.push(blog1)
+      this.myBlogs.push(blog2)
+      this.myBlogs.push(blog3)
+   }
+
+   // View,Edit,Create
+   viewBlog(blog: Blog) {
+    this.selectedBlog = blog
+    this.updateSubPage(this.VIEW_BLOG)
    }
 
    updateSubPage(num: number) {
     this.currentSubPage = num
    }
+
+   updateEditMode(editMode: number) {
+    this.currentEditMode = editMode
+   }
+
+
+   get username() {return this.client.getUsername()}
 }

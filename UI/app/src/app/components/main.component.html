@@ -4,10 +4,41 @@
     <button (click)="updateSubPage(2)"> About </button>
 </div>
 
-<div class="my-blogs" *ngIf="currentSubPage == MY_BLOGS">
-    <div class="formulated-message" *ngIf="blogs.length == 0">
+<div *ngIf="currentSubPage == MY_BLOGS">
+    <div class="formulated-message" *ngIf="myBlogs.length == 0">
         <h1> You have no blogs. </h1>
         <span> You can create blogs by clicking the "Create Blog" button. If you didn't know that already, ask on stack overflow how to drink bleach. </span>
+    </div>
+    <div class="blogs-container">
+        <div class="blog" *ngFor="let blog of myBlogs"> 
+            <div class="top-section">
+                {{blog.title}}
+                <span>{{blog.authorName}}</span>
+            </div>
+            <div class="middle-section">
+                {{blog.description}}
+            </div>
+            <div class="bottom-section">
+                <button (click)="viewBlog(blog)"> View Content </button>
+                <button> Edit Blog </button>
+                <button> Delete Blog </button>
+            </div>
+        </div>
+    </div>
+    <button class="create-blog-button">Create Blog</button>
+</div>
+
+<div *ngIf="currentSubPage == ABOUT">
+    <div class="formulated-message">
+        <h1> About Page </h1>
+        <span> What? You thought I'd actually make a legit about page? </span>
+    </div>
+</div>
+
+<div *ngIf="currentSubPage == EXPLORE">
+    <div class="formulated-message" *ngIf="blogs.length == 0">
+        <h1> There are no blogs </h1>
+        <span> It's your returning champion Elgitensity, AKA Trappie Chan </span>
     </div>
     <div class="blogs-container">
         <div class="blog" *ngFor="let blog of blogs"> 
@@ -19,11 +50,14 @@
                 {{blog.description}}
             </div>
             <div class="bottom-section">
-                <button> View Content </button>
-                <button> Edit Blog </button>
-                <button> Delete Blog </button>
+                <button (click)="viewBlog(blog)"> View Content </button>
+                <button *ngIf="blog.title == username"> Edit Blog </button>
+                <button *ngIf="blog.title == username"> Delete Blog </button>
             </div>
         </div>
     </div>
-    <button class="create-blog-button">Create Blog</button>
 </div>
+
+
+
+<app-blog-create-edit *ngIf="currentSubPage == CREATE_EDIT_BLOG"></app-blog-create-edit>
