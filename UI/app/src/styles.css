@@ -13,4 +13,5 @@ body {
     background-color: hsl(182, 47%, 37%);
     margin: 0;
     overflow-y: auto;
+    overflow-x: hidden;
 }

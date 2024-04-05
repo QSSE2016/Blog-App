@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Blog } from '../types/types';
+import { Blog, EDIT_MODE } from '../types/types';
 import { APITalkerService } from '../services/apitalker.service';
 import { ClientInfoService } from '../services/client-info.service';
-
 
 @Component({
   selector: 'app-main',
@@ -19,15 +18,13 @@ export class MainComponent {
    readonly VIEW_BLOG = 3 
    readonly CREATE_EDIT_BLOG = 4 
 
-   // Edit Mode (Create or Edit). I'm lowkey starting to regret this method but whatever
-   readonly CREATE_MODE = 10
-   readonly EDIT_MODE = 11
+   // Edit Mode (Create or Edit). I have to use enums here (ok have, is a lie but whatever) since i want to use the mode in another component too.
 
    myBlogs: Array<Blog> = []
    blogs: Array<Blog> = []
-   currentSubPage = 1 // by default we are viewing the client's blogs.
-   currentEditMode = 10
-   selectedBlog: Blog = {} as Blog 
+   currentSubPage = this.MY_BLOGS 
+   currentEditMode: EDIT_MODE = EDIT_MODE.CREATE
+   selectedBlog?: Blog
 
    constructor(private talker: APITalkerService,private client: ClientInfoService) {
       let blog1: Blog = {
@@ -54,23 +51,49 @@ export class MainComponent {
         authorName: "You"
       }
 
+      this.selectedBlog = blog1
       this.myBlogs.push(blog1)
       this.myBlogs.push(blog2)
       this.myBlogs.push(blog3)
    }
 
-   // View,Edit,Create
+   // View,Edit,Create,Delete
    viewBlog(blog: Blog) {
     this.selectedBlog = blog
     this.updateSubPage(this.VIEW_BLOG)
+   }
+
+   editBlog(blog: Blog) {
+    this.selectedBlog = blog
+    this.updateEditMode(EDIT_MODE.EDIT)
+    this.updateSubPage(this.CREATE_EDIT_BLOG)
+   }
+
+   createBlog() {
+     this.selectedBlog = undefined
+     this.updateEditMode(EDIT_MODE.CREATE)
+     this.updateSubPage(this.CREATE_EDIT_BLOG)
+   }
+
+   deleteBlog(blog: Blog) {
+    if(confirm("Are you sure you want to delete this blog?")) {
+      alert("Blog Deleted!") // will implement later.
+    } 
    }
 
    updateSubPage(num: number) {
     this.currentSubPage = num
    }
 
-   updateEditMode(editMode: number) {
+   updateEditMode(editMode: EDIT_MODE) {
     this.currentEditMode = editMode
+   }
+
+
+   // Events
+   saveEditChanges(blog: Blog) {
+    alert("saved!")
+    this.updateSubPage(this.MY_BLOGS)
    }
 
 

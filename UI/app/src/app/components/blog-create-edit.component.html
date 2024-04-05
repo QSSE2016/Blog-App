@@ -1,1 +1,12 @@
-<p>blog-create-edit works!</p>
+<form [formGroup]="form" (submit)="submit()">
+    <h1> {{isCreating ? "Create Blog" : "Edit Blog"}}</h1>
+    <div class="input-section">
+        <label for="title"> Title </label>
+        <input type="text" name="title" placeholder="Title" formControlName="title">
+    </div>
+    <div class="input-section">
+        <label for="description"> Description </label>
+        <textarea name="description" rows="8" cols="50" formControlName="description" placeholder="Description"></textarea>
+    </div>
+    <button type="submit"> {{isCreating ? "Create Blog" : "Save Changes"}} </button>
+</form>

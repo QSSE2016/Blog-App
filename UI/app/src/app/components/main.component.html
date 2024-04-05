@@ -20,8 +20,8 @@
             </div>
             <div class="bottom-section">
                 <button (click)="viewBlog(blog)"> View Content </button>
-                <button> Edit Blog </button>
-                <button> Delete Blog </button>
+                <button (click)="editBlog(blog)"> Edit Blog </button>
+                <button (click)="deleteBlog(blog)"> Delete Blog </button>
             </div>
         </div>
     </div>
@@ -51,13 +51,19 @@
             </div>
             <div class="bottom-section">
                 <button (click)="viewBlog(blog)"> View Content </button>
-                <button *ngIf="blog.title == username"> Edit Blog </button>
-                <button *ngIf="blog.title == username"> Delete Blog </button>
+                <button *ngIf="blog.title == username" (click)="editBlog(blog)"> Edit Blog </button>
+                <button *ngIf="blog.title == username" (click)="deleteBlog(blog)"> Delete Blog </button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="view-page" *ngIf="currentSubPage == VIEW_BLOG && selectedBlog !== undefined">
+    <div class="blog-content-container">
+        <h1>{{selectedBlog.title}}</h1>
+        <p> {{selectedBlog.description}}</p>
+        <span>By: {{selectedBlog.authorName}}  </span>
+    </div>
+</div>
 
-
-<app-blog-create-edit *ngIf="currentSubPage == CREATE_EDIT_BLOG"></app-blog-create-edit>
+<app-blog-create-edit *ngIf="currentSubPage == CREATE_EDIT_BLOG" (finishEditEvent)="saveEditChanges($event)"></app-blog-create-edit>

@@ -25,3 +25,8 @@ export type Blog = {
     description: string,
     authorName: string,
 }
+
+export enum EDIT_MODE {
+    CREATE,
+    EDIT
+}
