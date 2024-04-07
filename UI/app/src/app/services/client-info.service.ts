@@ -9,14 +9,11 @@ import { Blog, User } from '../types/types';
 })
 export class ClientInfoService {
   private currentUser?: User
-  currentBlogs: Array<Blog> = []
-
   constructor() { }
 
   setUser(user: User) { this.currentUser = user}
 
   hasSameId(id: number) {return this.currentUser?.id == id}
+  getId() { return this.currentUser == undefined ? 0 : this.currentUser.id }
   getUsername() : string {return this.currentUser == undefined ? "" : this.currentUser.username}
-
-  getBlogs() { this.currentBlogs}
 }

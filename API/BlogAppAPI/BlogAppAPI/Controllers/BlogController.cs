@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogAppAPI.Controllers
 {
-    [Route("api/cred")]
+    [Route("api/blog")]
     [ApiController]
     public class BlogController : Controller
     {

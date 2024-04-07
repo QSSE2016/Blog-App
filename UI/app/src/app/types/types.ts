@@ -10,6 +10,18 @@ export type SignUpRequest = {
     password: string
 }
 
+export type BlogRequest = {
+    id: number,
+    name: string
+}
+
+export type EditCreateBlogRequest = {
+    title: string,
+    description: string,
+    authorName: string,
+    authorId: number
+}
+
 // The way i represent Users in front-end. 
 export type User = {
     username: string,
