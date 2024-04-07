@@ -49,7 +49,6 @@ export class PreLoginComponent implements OnDestroy {
     
     this.loginSub = this.talker.attemptLogin(this.loginForm.controls['username'].value,this.loginForm.controls['password'].value).subscribe({
       next: (arg: User) => {
-        alert("Signed in succesfully")
         this.userinfo.setUser(arg)
         this.exitLoginPageEvent.emit()
       },

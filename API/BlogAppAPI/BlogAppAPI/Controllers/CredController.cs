@@ -77,7 +77,7 @@ namespace BlogAppAPI.Controllers
 
             try
             {
-                await context.AddAsync(toAdd);
+                await context.Users.AddAsync(toAdd);
                 await context.SaveChangesAsync();
             } catch(Exception ex)
             {
