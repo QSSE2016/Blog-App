@@ -5,7 +5,7 @@
 form {
     position: absolute;
     width: 400px;
-    height: 600px;
+    height: 400px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
