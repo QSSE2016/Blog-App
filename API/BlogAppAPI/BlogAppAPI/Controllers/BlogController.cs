@@ -3,6 +3,7 @@ using BlogAppAPI.Models;
 using BlogAppAPI.Models.DTOS;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BlogAppAPI.Controllers
 {
@@ -35,12 +36,14 @@ namespace BlogAppAPI.Controllers
             return Ok(blogs);
         }
 
-        [HttpDelete("{*id}")]
-        public async Task<IActionResult> Delete([FromRoute] int blogId)
+        // OK I GIVE UP I COULDN'T GET THIS TO WORK WITH HTTPDELETE
+        [HttpPost]
+        [Route("delete")]
+        public async Task<IActionResult> Delete(DeleteRequestDto request)
         {
-            Blog? blog = await _context.Blogs.SingleOrDefaultAsync(x => x.Id == blogId);
+            Blog? blog = await _context.Blogs.SingleOrDefaultAsync(x => x.Id == request.Id);
             if (blog == null)
-                return BadRequest("No blog with the given id " + blogId);
+                return NotFound(new { id = request.Id});
 
             _context.Blogs.Remove(blog);
             await _context.SaveChangesAsync();
@@ -72,19 +75,15 @@ namespace BlogAppAPI.Controllers
         [Route("edit")]
         public async Task<IActionResult> Edit(EditOrCreateBlogRequestDto request)
         {
-            Blog? sameTitleBlog = await _context.Blogs.SingleOrDefaultAsync(x => x.Title == request.Title);
-            if (sameTitleBlog == null)
+            var titleToSearchWith = request.OriginalTitle.IsNullOrEmpty() ? request.Title : request.OriginalTitle;
+            Blog? blogToEdit = await _context.Blogs.SingleOrDefaultAsync(x => x.Title == titleToSearchWith);
+            if (blogToEdit == null)
                 return BadRequest("Can't find the blog you're editing...");
 
-            Blog updatedBlog = new Blog()
-            {
-                authorId = request.AuthorId,
-                authorName = request.AuthorName,
-                Title = request.Title,
-                Description = request.Description
-            };
-             
-            _context.Blogs.Entry(sameTitleBlog).CurrentValues.SetValues(updatedBlog);
+            // Update blog (without triggering error where you can't change id or whatever)
+            // DbContext tracks the blog so you can just update it independently...
+            blogToEdit.Title = request.Title;
+            blogToEdit.Description = request.Description;
             await _context.SaveChangesAsync();
 
             return Ok();

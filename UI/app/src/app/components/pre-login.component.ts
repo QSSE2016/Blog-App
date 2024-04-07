@@ -53,7 +53,7 @@ export class PreLoginComponent implements OnDestroy {
         this.exitLoginPageEvent.emit()
       },
       error: (arg) => {
-        alert(arg.error) // this is how you get the error message passed in.
+        alert("Wrong Credentials. (or the account does not exist.)") // this is how you get the error message passed in.
       }
     })
   }
@@ -70,7 +70,7 @@ export class PreLoginComponent implements OnDestroy {
         this.changeForm()   
       },
       error: (arg) => {
-        alert(arg.error)
+        alert("whatever man i dont care.")
       }
     })
   }

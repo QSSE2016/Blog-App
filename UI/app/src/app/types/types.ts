@@ -16,6 +16,7 @@ export type BlogRequest = {
 }
 
 export type EditCreateBlogRequest = {
+    originalTitle: string,
     title: string,
     description: string,
     authorName: string,

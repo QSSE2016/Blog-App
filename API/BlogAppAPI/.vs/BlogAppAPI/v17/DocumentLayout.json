@@ -11,12 +11,20 @@
       "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\models\\dtos\\editorcreateblogrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\models\\dtos\\blogrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\models\\dtos\\blogrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\models\\dtos\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\models\\dtos\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\models\\dtos\\blogrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\models\\dtos\\blogrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\controllers\\credcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\controllers\\credcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\models\\dtos\\deleterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|solutionrelative:blogappapi\\models\\dtos\\deleterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24F7E6CF-E079-4089-B22A-320396F4BBC4}|BlogAppAPI\\BlogAppAPI.csproj|c:\\users\\alexs\\onedrive\\desktop\\programming\\asp\\blog-app\\api\\blogappapi\\blogappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +38,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "DeleteRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Models\\DTOS\\DeleteRequestDto.cs",
+              "RelativeDocumentMoniker": "BlogAppAPI\\Models\\DTOS\\DeleteRequestDto.cs",
+              "ToolTip": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Models\\DTOS\\DeleteRequestDto.cs",
+              "RelativeToolTip": "BlogAppAPI\\Models\\DTOS\\DeleteRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T11:40:25.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CredController.cs",
+              "DocumentMoniker": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Controllers\\CredController.cs",
+              "RelativeDocumentMoniker": "BlogAppAPI\\Controllers\\CredController.cs",
+              "ToolTip": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Controllers\\CredController.cs",
+              "RelativeToolTip": "BlogAppAPI\\Controllers\\CredController.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAwwD0AAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T11:21:40.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LoginRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Models\\DTOS\\LoginRequestDto.cs",
               "RelativeDocumentMoniker": "BlogAppAPI\\Models\\DTOS\\LoginRequestDto.cs",
@@ -53,14 +87,14 @@
               "RelativeDocumentMoniker": "BlogAppAPI\\Models\\DTOS\\EditOrCreateBlogRequestDto.cs",
               "ToolTip": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Models\\DTOS\\EditOrCreateBlogRequestDto.cs",
               "RelativeToolTip": "BlogAppAPI\\Models\\DTOS\\EditOrCreateBlogRequestDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T10:18:21.35Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "BlogRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Models\\DTOS\\BlogRequestDto.cs",
               "RelativeDocumentMoniker": "BlogAppAPI\\Models\\DTOS\\BlogRequestDto.cs",
@@ -79,14 +113,14 @@
               "RelativeDocumentMoniker": "BlogAppAPI\\Controllers\\BlogController.cs",
               "ToolTip": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Controllers\\BlogController.cs",
               "RelativeToolTip": "BlogAppAPI\\Controllers\\BlogController.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAkwEcAAAAXAAAA",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAcwE8AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T09:56:35.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alexs\\OneDrive\\Desktop\\Programming\\asp\\Blog-App\\API\\BlogAppAPI\\BlogAppAPI\\Program.cs",
               "RelativeDocumentMoniker": "BlogAppAPI\\Program.cs",

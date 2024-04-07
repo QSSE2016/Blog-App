@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Blog, EDIT_MODE } from '../types/types';
 import { APITalkerService } from '../services/apitalker.service';
 import { ClientInfoService } from '../services/client-info.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent {
+export class MainComponent implements OnInit,OnDestroy {
    // I used enums before to track which page is active so now I'll use constants. Perfectly balanced as all things should be.
    readonly EXPLORE = 0
    readonly MY_BLOGS = 1
@@ -17,45 +18,31 @@ export class MainComponent {
    // Secret Pages
    readonly VIEW_BLOG = 3 
    readonly CREATE_EDIT_BLOG = 4 
-
+   
    // Edit Mode (Create or Edit). I have to use enums here (ok have, is a lie but whatever) since i want to use the mode in another component too.
-
-   myBlogs: Array<Blog> = []
-   blogs: Array<Blog> = []
    currentSubPage = this.MY_BLOGS 
    currentEditMode: EDIT_MODE = EDIT_MODE.CREATE
    selectedBlog?: Blog
 
-   constructor(private talker: APITalkerService,private client: ClientInfoService) {
-      let blog1: Blog = {
-        id: 0,
-        title: "Ben Shapiro Travels to Barbie World",
-        description: "Ok let's say hypothetically i'm a barbie girl. Ok let's also say im in a barbie world. Right, so with this hypothetical its trivial to assume that life in plastic is going to be fantastic.",
-        authorId: 0,
-        authorName: "You"
-      }
+   // Information
+   blogs: Array<Blog> = []
+   myBlogs: Array<Blog> = []
+   allBlogSub?: Subscription
+   myBlogSub?: Subscription
+   deleteSub?: Subscription
 
-      let blog2: Blog = {
-        id: 0,
-        title: "Ben Shapiro Travels to Some other World",
-        description: "Ok let's say hypothetically i'm a barbie girl. Ok let's also say im in a barbie world. Right, so with this hypothetical its trivial to assume that life in plastic is going to be fantastic.",
-        authorId: 0,
-        authorName: "You"
-      }
+   constructor(private talker: APITalkerService,private client: ClientInfoService) {    }
 
-      let blog3: Blog = {
-        id: 0,
-        title: "Ben Shapiro Travels to some other other world. World",
-        description: "Ok let's say hypothetically i'm a barbie girl. Ok let's also say im in a barbie world. Right, so with this hypothetical its trivial to assume that life in plastic is going to be fantastic.",
-        authorId: 0,
-        authorName: "You"
-      }
-
-      this.selectedBlog = blog1
-      this.myBlogs.push(blog1)
-      this.myBlogs.push(blog2)
-      this.myBlogs.push(blog3)
+   ngOnInit(): void {
+     this.getBlogsToView()
    }
+
+   ngOnDestroy(): void {
+     this.myBlogSub?.unsubscribe()
+     this.allBlogSub?.unsubscribe()
+     this.deleteSub?.unsubscribe()
+   }
+
 
    // View,Edit,Create,Delete
    viewBlog(blog: Blog) {
@@ -75,9 +62,17 @@ export class MainComponent {
      this.updateSubPage(this.CREATE_EDIT_BLOG)
    }
 
-   deleteBlog(blog: Blog) {
+   deleteBlog(i: number) {
     if(confirm("Are you sure you want to delete this blog?")) {
-      alert("Blog Deleted!") // will implement later.
+      this.deleteSub = this.talker.deleteBlog(this.myBlogs[i].id).subscribe({
+        next: (arg) => {
+          this.myBlogs.splice(i,1)
+          console.log("on next")
+        },
+        error: (arg) => {
+          console.log("ERROR")
+        }
+      }) // idk if this sub,unsub stuff is needed but it's going here regardgless
     } 
    }
 
@@ -91,11 +86,20 @@ export class MainComponent {
 
 
    // Events
-   saveEditChanges(blog: Blog) {
-    alert("saved!")
+   saveEditChanges() {
+    this.getBlogsToView()
     this.updateSubPage(this.MY_BLOGS)
    }
 
+   getBlogsToView() {
+    this.allBlogSub = this.talker.getAllBlogs().subscribe((items: any) => {
+      this.blogs = items
+   })
+
+   this.myBlogSub = this.talker.getMyBlogs().subscribe((items: any) => {
+    this.myBlogs = items
+   })
+   }
 
    get username() {return this.client.getUsername()}
 }

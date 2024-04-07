@@ -10,7 +10,7 @@
         <span> You can create blogs by clicking the "Create Blog" button. If you didn't know that already, ask on stack overflow how to drink bleach. </span>
     </div>
     <div class="blogs-container">
-        <div class="blog" *ngFor="let blog of myBlogs"> 
+        <div class="blog" *ngFor="let blog of myBlogs;let i = index"> 
             <div class="top-section">
                 {{blog.title}}
                 <span>{{blog.authorName}}</span>
@@ -21,11 +21,11 @@
             <div class="bottom-section">
                 <button (click)="viewBlog(blog)"> View Content </button>
                 <button (click)="editBlog(blog)"> Edit Blog </button>
-                <button (click)="deleteBlog(blog)"> Delete Blog </button>
+                <button (click)="deleteBlog(i)"> Delete Blog </button>
             </div>
         </div>
     </div>
-    <button class="create-blog-button">Create Blog</button>
+    <button class="create-blog-button" (click)="createBlog()">Create Blog</button>
 </div>
 
 <div *ngIf="currentSubPage == ABOUT">
@@ -41,7 +41,7 @@
         <span> It's your returning champion Elgitensity, AKA Trappie Chan </span>
     </div>
     <div class="blogs-container">
-        <div class="blog" *ngFor="let blog of blogs"> 
+        <div class="blog" *ngFor="let blog of blogs;let i = index"> 
             <div class="top-section">
                 {{blog.title}}
                 <span>{{blog.authorName}}</span>
@@ -51,8 +51,8 @@
             </div>
             <div class="bottom-section">
                 <button (click)="viewBlog(blog)"> View Content </button>
-                <button *ngIf="blog.title == username" (click)="editBlog(blog)"> Edit Blog </button>
-                <button *ngIf="blog.title == username" (click)="deleteBlog(blog)"> Delete Blog </button>
+                <button *ngIf="blog.authorName == username" (click)="editBlog(blog)"> Edit Blog </button>
+                <button *ngIf="blog.authorName == username" (click)="deleteBlog(i)"> Delete Blog </button>
             </div>
         </div>
     </div>
@@ -66,4 +66,4 @@
     </div>
 </div>
 
-<app-blog-create-edit *ngIf="currentSubPage == CREATE_EDIT_BLOG" (finishEditEvent)="saveEditChanges($event)"></app-blog-create-edit>
+<app-blog-create-edit *ngIf="currentSubPage == CREATE_EDIT_BLOG" [blogToEdit]="selectedBlog" [pageFunctionMode]="currentEditMode" (finishEditEvent)="saveEditChanges()"></app-blog-create-edit>

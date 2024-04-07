@@ -54,11 +54,14 @@ export class APITalkerService {
   }
 
   deleteBlog(id: number) {
-    return this.http.delete(`${this.url}/${this.blogRoute}/${id}`)
+    return this.http.post(`${this.url}/${this.blogRoute}/delete`,{
+      id: id
+    })
   }
 
   createBlog(title: string,description: string) {
     let payload: EditCreateBlogRequest = {
+      originalTitle: '',
       title: title,
       description: description,
       authorId: this.userInfo.getId(),
@@ -68,8 +71,9 @@ export class APITalkerService {
     return this.http.post(`${this.url}/${this.blogRoute}/create`,payload)
   }
 
-  editBlog(title: string,description: string) {
+  editBlog(originalTitle: string, title: string,description: string) {
     let payload: EditCreateBlogRequest = {
+      originalTitle: originalTitle,
       title: title,
       description: description,
       authorId: this.userInfo.getId(),
